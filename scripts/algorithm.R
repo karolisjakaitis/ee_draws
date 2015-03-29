@@ -96,10 +96,10 @@ draw <- function(days_to_simulate = 120,
     #Perform a draw
     if(i %% draw_days == 0) {
       
-      if(length(pool) < draw_size + 1) {
+      if(length(pool) < draw_size) {
         print('-----NEW DRAW INCOMING------ ')
         print(paste0('Draw will take place on: ', Sys.Date()+i))
-        print(paste0('There is only: ', length(pool), ' people in the pool and you are trying to draw 3000!!'))
+        print(paste0('There is only: ', length(pool), ' people in the pool and you are trying to draw ,', draw_size, '!!'))
         print('No draw today')
         cat('\n')
         
