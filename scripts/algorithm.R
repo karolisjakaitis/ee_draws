@@ -51,6 +51,7 @@ draw <- function(days_to_simulate = 120,
   #Define a training dataset
   train_data <- data[data$datestamp >= start & data$datestamp <= end,]
   train_data_scores <- train_data$`1_and_2_and_3_and_4_total_points_out_of_1200`
+
   #Calculate number of entries in the spreadsheet for the given training period
   new_entries <- nrow(train_data)
   
@@ -94,10 +95,6 @@ draw <- function(days_to_simulate = 120,
     
     #Perform a draw
     if(i %% draw_days == 0) {
-      
-      if(i == 225) {
-        return
-      }
       
       if(length(pool) < draw_size + 1) {
         print('-----NEW DRAW INCOMING------ ')
