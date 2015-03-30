@@ -1,21 +1,22 @@
 source(file = 'scripts/clean_data.R')
 
-draw <- function(days_to_simulate = 120,
+perform_draw <- function(days_to_simulate = 120,
                  spreadsheet_total_share = 0.05,
                  draws_per_month = 2,
-                 draw_size = 1600) {
+                 draw_size = 1600,
+                 lmia_prob = NULL) {
   
   #Get clean data
   data <- clean_data()
-  
+  draws <- draw_data()
   
 ### DEFINE CONSTANTS ####
   
   # Last draw date
-  last_draw_date <- as.Date('2015-03-27')
+  last_draw_date <- draws$date
 
   #Retrieve the minimum CRS at the last ITA
-  start_min_score <- 453
+  start_min_score <- draws$min_crs
 
   days_to_simulate <- days_to_simulate  
 
@@ -62,7 +63,12 @@ draw <- function(days_to_simulate = 120,
   num_scores_600_plus <- sum(train_data_scores > 600)
 
   #Share of entries that have LMIA
-  lmia_prob <- round(num_scores_600_plus/new_entries, 3)
+  if(is.null(lmia_prob)) {
+    lmia_prob <- round(num_scores_600_plus/new_entries, 3)
+  } else {
+    lmia_prob <- lmia_prob
+  }
+  
   
  
 ### POPULATION PARAMETERS ####
