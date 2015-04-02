@@ -2,6 +2,11 @@ library(magrittr)
 library(lubridate)
 
 clean_data <- function() {
+  
+  cat('--------------------------------\n')
+  cat('Downloading Scores spreadsheet\n')
+  cat('--------------------------------\n\n')
+  
   #Url for spreadsheet pool data
   url_pool <- 'https://docs.google.com/spreadsheets/d/13Hf5KT35xOJMzlHo9KVenqYSrZFTjt0qc_PZgrI4mls/export?gid=2117108251&format=csv'
   
@@ -46,6 +51,11 @@ clean_data <- function() {
 }
 
 draw_data <- function(last_draw = TRUE) {  
+  
+  cat('--------------------------------\n')
+  cat('Downloading Draws Spreadsheet\n')
+  cat('--------------------------------\n\n')
+  
   #Url for draws info
   url_draws <- 'https://docs.google.com/spreadsheets/d/13Hf5KT35xOJMzlHo9KVenqYSrZFTjt0qc_PZgrI4mls/export?gid=1489650995&format=csv'
   
